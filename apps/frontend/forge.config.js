@@ -5,6 +5,8 @@ const { VitePlugin } = require('@electron-forge/plugin-vite');
 module.exports = {
   packagerConfig: {
     asar: true,
+    // npm scoped name (@articledesk/frontend) n'est pas un nom de binaire valide sur Linux
+    executableName: 'articledesk',
   },
   rebuildConfig: {},
   makers: [
@@ -18,11 +20,19 @@ module.exports = {
     },
     {
       name: '@electron-forge/maker-deb',
-      config: {},
+      config: {
+        options: {
+          bin: 'articledesk',
+        },
+      },
     },
     {
       name: '@electron-forge/maker-rpm',
-      config: {},
+      config: {
+        options: {
+          bin: 'articledesk',
+        },
+      },
     },
   ],
   publishers: [

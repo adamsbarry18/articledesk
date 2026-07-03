@@ -1,6 +1,7 @@
 {
   "name": "@articledesk/frontend",
-  "productName": "ArticleDesk",  "version": "1.0.0",
+  "productName": "ArticleDesk",
+  "version": "1.0.0",
   "description": "Application desktop de gestion d'articles — Electron + Vue 3",
   "main": ".vite/build/main.js",
   "scripts": {
