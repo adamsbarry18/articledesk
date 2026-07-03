@@ -11,4 +11,16 @@ export default defineConfig({
       '@shared': path.resolve(__dirname, 'src/shared'),
     },
   },
+  build: {
+    outDir: '.vite/build',
+    emptyOutDir: false,
+    lib: {
+      entry: path.resolve(__dirname, 'src/preload.js'),
+      formats: ['cjs'],
+      fileName: () => 'preload.js',
+    },
+    rollupOptions: {
+      external: ['electron'],
+    },
+  },
 });

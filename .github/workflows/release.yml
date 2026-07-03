@@ -31,10 +31,7 @@ jobs:
         run: npm ci
 
       - name: Build Vite assets
-        run: |
-          npx vite build --config vite.main.config.mjs
-          npx vite build --config vite.preload.config.mjs
-          npx vite build --config vite.renderer.config.mjs
+        run: npm run build:vite
 
       - name: Build executable
         run: npm run make

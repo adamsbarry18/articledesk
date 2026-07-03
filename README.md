@@ -54,7 +54,7 @@ articledesk/
 ├── scripts/               # Scripts d'installation
 ├── docker-compose.yml
 ├── docker-compose.override.yml
-└── Makefile                # Pas de package.json racine — chaque app est autonome
+└── Makefile               
 ```
 
 Chaque application gère ses propres dépendances :

@@ -40,8 +40,6 @@ const createWindow = () => {
       // Sécurité : isolation du contexte et désactivation de nodeIntegration
       contextIsolation: true,
       nodeIntegration: false,
-      // autres options de sécurité recommandées (optionnel)
-      enableRemoteModule: false,
     },
   });
 

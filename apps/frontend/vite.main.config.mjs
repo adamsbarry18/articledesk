@@ -12,4 +12,26 @@ export default defineConfig({
       '@main': path.resolve(__dirname, 'src/main'),
     },
   },
+  define: {
+    MAIN_WINDOW_VITE_DEV_SERVER_URL: 'undefined',
+    MAIN_WINDOW_VITE_NAME: JSON.stringify('main_window'),
+  },
+  build: {
+    outDir: '.vite/build',
+    emptyOutDir: false,
+    lib: {
+      entry: path.resolve(__dirname, 'src/main.js'),
+      formats: ['cjs'],
+      fileName: () => 'main.js',
+    },
+    rollupOptions: {
+      external: [
+        'electron',
+        'electron-log',
+        'electron-squirrel-startup',
+        'path',
+        'node:path',
+      ],
+    },
+  },
 });
