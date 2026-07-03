@@ -1,0 +1,30 @@
+services:
+  api:
+    build:
+      context: ./apps/backend
+      dockerfile: Dockerfile
+    container_name: articledesk-api
+    restart: unless-stopped
+    ports:
+      - "${API_PORT:-3000}:3000"
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/articles"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # Proxy optionnel — décommenter si nécessaire
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: articledesk-nginx
+  #   ports:
+  #     - "${NGINX_PORT:-8080}:80"
+  #   volumes:
+  #     - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+  #   depends_on:
+  #     api:
+  #       condition: service_healthy

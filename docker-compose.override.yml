@@ -1,0 +1,11 @@
+# Surcharges développement — appliquées automatiquement par docker compose
+services:
+  api:
+    build:
+      target: development
+    volumes:
+      - ./apps/backend:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+    command: npm run dev

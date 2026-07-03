@@ -1,0 +1,48 @@
+{
+  "name": "@articledesk/frontend",
+  "productName": "ArticleDesk",  "version": "1.0.0",
+  "description": "Application desktop de gestion d'articles — Electron + Vue 3",
+  "main": ".vite/build/main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "check:api": "node scripts/check-api.mjs"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Mamadou",
+    "email": "mabarry2018@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@electron-forge/cli": "^7.10.2",
+    "@electron-forge/maker-deb": "^7.10.2",
+    "@electron-forge/maker-rpm": "^7.10.2",
+    "@electron-forge/maker-squirrel": "^7.10.2",
+    "@electron-forge/maker-zip": "^7.10.2",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.10.2",
+    "@electron-forge/plugin-fuses": "^7.10.2",
+    "@electron-forge/plugin-vite": "^7.10.2",
+    "@electron-forge/publisher-github": "^7.10.2",
+    "@electron/fuses": "^1.8.0",
+    "@tailwindcss/vite": "^4.3.2",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "dotenv-cli": "^10.0.0",
+    "electron": "38.4.0",
+    "tailwindcss": "^4.3.2",
+    "vite": "^5.4.21"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "electron-log": "^5.4.3",
+    "electron-squirrel-startup": "^1.0.1",
+    "vue": "^3.5.22",
+    "vue-router": "^4.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamsbarry18/articledesk"
+  }
+}
