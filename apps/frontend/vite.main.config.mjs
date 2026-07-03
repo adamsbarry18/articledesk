@@ -24,14 +24,10 @@ export default defineConfig({
       formats: ['cjs'],
       fileName: () => 'main.js',
     },
+    // Ne pas externaliser electron-log / electron-squirrel-startup :
+    // le paquet asar ne contient pas node_modules, ces deps doivent être bundlées.
     rollupOptions: {
-      external: [
-        'electron',
-        'electron-log',
-        'electron-squirrel-startup',
-        'path',
-        'node:path',
-      ],
+      external: ['electron', 'electron/main'],
     },
   },
 });

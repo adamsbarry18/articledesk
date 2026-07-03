@@ -6,8 +6,8 @@ import { validateEnv } from '@shared/config/env.js';
 import { apiClient } from '@main/api/index.js';
 import { registerIpcHandlers } from '@main/ipc/index.js';
 
-// Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (started) {
+// Raccourcis Squirrel.Windows — inutile sur macOS/Linux
+if (process.platform === 'win32' && started) {
   app.quit();
 }
 

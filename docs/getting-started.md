@@ -2,7 +2,7 @@
 
 ## Prérequis
 
-- Node.js ≥ 20
+- Node.js ≥ 22 (CI GitHub Actions : 24)
 - npm ≥ 10
 - Docker (optionnel, pour l'API containerisée)
 
