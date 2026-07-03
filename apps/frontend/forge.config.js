@@ -12,7 +12,10 @@ module.exports = {
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
-      config: {},
+      config: {
+        name: 'articledesk',
+        setupExe: 'ArticleDeskSetup.exe',
+      },
     },
     {
       name: '@electron-forge/maker-zip',

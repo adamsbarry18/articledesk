@@ -1,5 +1,5 @@
 {
-  "name": "@articledesk/frontend",
+  "name": "articledesk",
   "productName": "ArticleDesk",
   "version": "1.0.0",
   "description": "Application desktop de gestion d'articles — Electron + Vue 3",
