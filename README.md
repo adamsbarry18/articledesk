@@ -1,5 +1,8 @@
 # ArticleDesk
 
+## Réaliser par :
+- Mamadou Adama BARRY
+
 Monorepo pour le TP **Application Desktop Electron** — gestion d'articles avec authentification.
 
 | Composant | Chemin | Stack |
