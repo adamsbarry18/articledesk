@@ -5,76 +5,9 @@ const { middlewareVerifyToken } = require('../core/middlewares');
 const { v4: uuidv4 } = require('uuid');
 
 let DB_Articles = [
-    {
-        id: '1',
-        title: 'Premier article',
-        desc: 'Introduction à la gestion d\'articles — découvrez les bases de notre plateforme desktop.',
-        author: 'Isaac',
-        imgPath: 'https://picsum.photos/seed/articledesk-1/400/400',
-    },
-    {
-        id: '2',
-        title: 'Deuxième article',
-        desc: 'Les bonnes pratiques pour organiser et publier vos contenus efficacement.',
-        author: 'Sanchez',
-        imgPath: 'https://picsum.photos/seed/articledesk-2/400/400',
-    },
-    {
-        id: '3',
-        title: 'Troisième article',
-        desc: 'Comment structurer une API REST avec authentification JWT.',
-        author: 'Toto',
-        imgPath: 'https://picsum.photos/seed/articledesk-3/400/400',
-    },
-    {
-        id: '4',
-        title: 'Architecture Electron',
-        desc: 'Comprendre la séparation main process / renderer process dans une app desktop.',
-        author: 'Isaac',
-        imgPath: 'https://picsum.photos/seed/articledesk-4/400/400',
-    },
-    {
-        id: '5',
-        title: 'Vue 3 et Composition API',
-        desc: 'Construire des interfaces réactives avec Vue 3, composables et Vue Router.',
-        author: 'Tata',
-        imgPath: 'https://picsum.photos/seed/articledesk-5/400/400',
-    },
-    {
-        id: '6',
-        title: 'Communication IPC',
-        desc: 'Sécuriser les échanges entre le frontend et le backend via preload et ipcMain.',
-        author: 'Sanchez',
-        imgPath: 'https://picsum.photos/seed/articledesk-6/400/400',
-    },
-    {
-        id: '7',
-        title: 'Tailwind CSS en pratique',
-        desc: 'Design system moderne avec utilitaires, composants réutilisables et responsive design.',
-        author: 'Toto',
-        imgPath: 'https://picsum.photos/seed/articledesk-7/400/400',
-    },
-    {
-        id: '8',
-        title: 'Packaging et distribution',
-        desc: 'Générer un exécutable multiplateforme avec Electron Forge et GitHub Actions.',
-        author: 'Isaac',
-        imgPath: 'https://picsum.photos/seed/articledesk-8/400/400',
-    },
-    {
-        id: '9',
-        title: 'Tests et validation API',
-        desc: 'Valider les endpoints avec Postman, scripts automatisés et health checks.',
-        author: 'Tata',
-        imgPath: 'https://picsum.photos/seed/articledesk-9/400/400',
-    },
-    {
-        id: '10',
-        title: 'Monorepo ArticleDesk',
-        desc: 'Organiser backend et frontend dans un même dépôt avec Makefile et scripts d\'installation.',
-        author: 'Sanchez',
-        imgPath: 'https://picsum.photos/seed/articledesk-10/400/400',
-    },
+    { id: '1', title: 'Premier article', desc: 'Contenu du premier article', author: 'Isaac', imgPath: 'https://dogtime.com/wp-content/uploads/sites/12/2011/01/GettyImages-653001154-e1691965000531.jpg' },
+    { id: '2', title: 'Deuxième article', desc: 'Contenu du deuxième article', author: 'Sanchez', imgPath: 'https://dogtime.com/wp-content/uploads/sites/12/2011/01/GettyImages-653001154-e1691965000531.jpg' },
+    { id: '3', title: 'Troisième article', desc: 'Contenu du troisième article', author: 'Toto', imgPath: 'https://dogtime.com/wp-content/uploads/sites/12/2011/01/GettyImages-653001154-e1691965000531.jpg' }
 ];
 
 // ================================================================== //
