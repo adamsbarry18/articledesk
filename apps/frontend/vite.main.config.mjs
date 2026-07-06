@@ -5,17 +5,20 @@ import { defineConfig } from 'vite';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://vitejs.dev/config
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   resolve: {
     alias: {
       '@shared': path.resolve(__dirname, 'src/shared'),
       '@main': path.resolve(__dirname, 'src/main'),
     },
   },
-  define: {
-    MAIN_WINDOW_VITE_DEV_SERVER_URL: 'undefined',
-    MAIN_WINDOW_VITE_NAME: JSON.stringify('main_window'),
-  },
+  // En dev (serve), Forge injecte MAIN_WINDOW_VITE_DEV_SERVER_URL — ne pas l'écraser ici.
+  ...(command === 'build' && {
+    define: {
+      MAIN_WINDOW_VITE_DEV_SERVER_URL: 'undefined',
+      MAIN_WINDOW_VITE_NAME: JSON.stringify('main_window'),
+    },
+  }),
   build: {
     outDir: '.vite/build',
     emptyOutDir: false,
@@ -30,4 +33,4 @@ export default defineConfig({
       external: ['electron', 'electron/main'],
     },
   },
-});
+}));
