@@ -43,6 +43,9 @@
     "vue": "^3.5.22",
     "vue-router": "^4.3.0"
   },
+  "optionalDependencies": {
+    "encoding": "0.1.13"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/adamsbarry18/articledesk"
