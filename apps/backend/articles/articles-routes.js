@@ -71,7 +71,7 @@ let DB_Articles = [
     {
         id: '10',
         title: 'Monorepo ArticleDesk',
-        desc: 'Organiser backend et frontend dans un même dépôt avec Makefile et Docker Compose.',
+        desc: 'Organiser backend et frontend dans un même dépôt avec Makefile et scripts d\'installation.',
         author: 'Sanchez',
         imgPath: 'https://picsum.photos/seed/articledesk-10/400/400',
     },

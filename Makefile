@@ -1,4 +1,4 @@
-.PHONY: help install install-backend install-frontend dev backend frontend check-api build docker-up docker-down clean
+.PHONY: help install install-backend install-frontend dev backend frontend check-api build clean
 
 help: ## Affiche l'aide
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-18s\033[0m %s\n", $$1, $$2}'
@@ -32,12 +32,6 @@ check-api: ## Vérifie la connectivité ApiArticle
 
 build: ## Génère l'exécutable desktop (OS courant)
 	cd apps/frontend && npm run make
-
-docker-up: ## Démarre les services Docker (API)
-	docker compose up -d --build
-
-docker-down: ## Arrête les services Docker
-	docker compose down
 
 clean: ## Supprime node_modules et artefacts de build
 	rm -rf apps/backend/node_modules apps/frontend/node_modules

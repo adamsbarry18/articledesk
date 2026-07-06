@@ -7,31 +7,37 @@ Monorepo pour le TP **Application Desktop Electron** — gestion d'articles avec
 | **API** | `apps/backend` | Node.js, Express, JWT |
 | **Desktop** | `apps/frontend` | Electron, Vue 3, Tailwind, Vite |
 
+## Prérequis
+
+- Node.js ≥ 22 (CI GitHub Actions : 24)
+- npm ≥ 10
+
 ## Démarrage rapide
 
 ```bash
+git clone https://github.com/adamsbarry18/articledesk.git
+cd articledesk
+
 # Installation
 ./scripts/setup.sh
 # ou : make install
 
-# Terminal 1 — API
+# Terminal 1 — API (http://localhost:3000, Swagger : /api-docs)
 make backend
 
 # Terminal 2 — Application desktop
 make frontend
 
-# Vérifier l'API
+# Vérifier la connectivité API
 make check-api
 ```
 
-## Docker
+## Configuration
 
-```bash
-# API seule (dev avec hot-reload via override)
-docker compose up --build
+Copiez `apps/frontend/.env.example` vers `apps/frontend/.env` :
 
-# Production
-docker compose -f docker-compose.yml up -d --build
+```env
+API_BASE_URL=http://localhost:3000
 ```
 
 ## Build exécutable
@@ -39,7 +45,31 @@ docker compose -f docker-compose.yml up -d --build
 ```bash
 make build
 # → apps/frontend/out/
+# macOS : apps/frontend/out/ArticleDesk-darwin-arm64/ArticleDesk.app
 ```
+
+L'API doit tourner en local (`make backend`) avant d'utiliser l'app packagée.
+
+## Architecture
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    apps/frontend                         │
+│  ┌──────────┐    IPC     ┌──────────┐    HTTP          │
+│  │ Vue 3    │ ◄────────► │ Electron │ ──────────────┐   │
+│  │ Renderer │            │  Main    │               │   │
+│  └──────────┘            └──────────┘               │   │
+└──────────────────────────────────────────────────────│───┘
+                                                       ▼
+┌─────────────────────────────────────────────────────────┐
+│                    apps/backend                          │
+│              Express API (port 3000)                     │
+└─────────────────────────────────────────────────────────┘
+```
+
+- Le renderer Vue ne contacte jamais l'API directement.
+- Les appels passent par IPC (`preload.js` → `main.js` → `apiClient`).
+- Sécurité Electron : `contextIsolation: true`, `nodeIntegration: false`, pont via `contextBridge`.
 
 ## Structure
 
@@ -47,27 +77,13 @@ make build
 articledesk/
 ├── .github/workflows/     # CI + Release
 ├── apps/
-│   ├── backend/           # API REST (ApiArticle)
+│   ├── backend/           # API REST (données en mémoire)
 │   └── frontend/          # App Electron/Vue
-├── docs/                  # Documentation
-├── etc/nginx/             # Config proxy (optionnel)
 ├── scripts/               # Scripts d'installation
-├── docker-compose.yml
-├── docker-compose.override.yml
-└── Makefile               
+└── Makefile
 ```
 
-Chaque application gère ses propres dépendances :
-
-```
-apps/backend/package.json + package-lock.json
-apps/frontend/package.json + package-lock.json
-```
-
-## Documentation
-
-- [Guide de démarrage](docs/getting-started.md)
-- [Architecture](docs/architecture.md)
+Chaque application gère ses propres dépendances (`package.json` + `package-lock.json`).
 
 ## Comptes de test
 
